@@ -22,6 +22,7 @@
         android:textSize="22sp" />
 
     <TextView
+        android:layout_marginHorizontal="10dp"
         android:id="@+id/tv_work_detail_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

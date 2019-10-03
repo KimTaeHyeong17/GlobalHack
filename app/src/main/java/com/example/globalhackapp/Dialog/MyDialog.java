@@ -26,7 +26,6 @@ public class MyDialog extends android.app.Dialog implements View.OnClickListener
 
     public interface MyDialogListener {
         public void onPositiveClicked();
-        public void onNegativeClicked();
     }
 
 
@@ -93,6 +92,11 @@ public class MyDialog extends android.app.Dialog implements View.OnClickListener
                 btn_accept.setText("OK");
 
         }
+    }
+    public void setText(String text1, String text2){
+        tv_work_detail_1.setText(text1);
+        tv_work_detail_2.setText(text2);
+        btn_accept.setText("OK");
     }
 
     @Override

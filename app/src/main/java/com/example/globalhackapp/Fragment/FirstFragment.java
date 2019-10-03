@@ -150,88 +150,65 @@ public class FirstFragment extends Fragment {
         bt.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() { //데이터 수신
             public void onDataReceived(byte[] data, String message) {
 
-                final MyDialog myDialog1 = new MyDialog(getContext(), getActivity(), 0);
-                final MyDialog myDialog2 = new MyDialog(getContext(), getActivity(), 1);
-                final MyDialog myDialog3 = new MyDialog(getContext(), getActivity(), 2);
-                MyDialog myDialog4 = new MyDialog(getContext(), getActivity(), 2);
+//                final MyDialog myDialog1 = new MyDialog(getContext(), getActivity(), 0);
+//                final MyDialog myDialog2 = new MyDialog(getContext(), getActivity(), 1);
+//                final MyDialog myDialog3 = new MyDialog(getContext(), getActivity(), 2);
+//                MyDialog myDialog4 = new MyDialog(getContext(), getActivity(), 2);
+                MyDialog myDialog = new MyDialog(getContext(), getActivity(), 0);
 
                 Log.e("message from arduino", message);
 
                 //data receive
                 if (message.equals("Sensor Ready!")) {
 //                    Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
-                    myDialog1.show();
-                    Log.e("showing", String.valueOf(myDialog1.isShowing()));
+                    myDialog.setText("Put your Finger on senser", "Please wait for 2 seconds");
+                    myDialog.show();
 
 
                 } else if (message.equals("1st attempt")) {
                     Log.e("1st attempt", "first attemt");
-                    myDialog1.show();
-
+                    myDialog.dismiss();
+                    myDialog.setText("Put your Finger on senser", "Please wait for 2 seconds");
+                    myDialog.show();
 
 
                 } else if (message.equals("Remove finger")) {
                     Log.e("remove finger", "");
-                    myDialog1.dismiss();
-                    new Handler().postDelayed(new Runnable()
-                    {
-                        @Override
-                        public void run()
-                        {
-                            myDialog2.show();
-                        }
-                    }, 1000);// 0.5초 정도 딜레이를 준 후 시작
+                    myDialog.dismiss();
+                    myDialog.setText("Remove finger", "Wait for the further instruction");
+                    myDialog.show();
 
 
                 } else if (message.equals("2nd attempt")) {
-                    Log.e("2nd attempt", "");
-                    myDialog2.dismiss();
-                    new Handler().postDelayed(new Runnable()
-                    {
-                        @Override
-                        public void run()
-                        {
-                            myDialog1.show();
-                        }
-                    }, 1000);// 0.5초 정도 딜레이를 준 후 시작
+                    myDialog.dismiss();
+                    myDialog.setText("Put your Finger on senser", "Please wait for 2 seconds");
+                    myDialog.show();
 
+                    Log.e("2nd attempt", "");
 
 
                 } else if (message.equals("Prints matched!")) {
-                    myDialog1.dismiss();
-                    new Handler().postDelayed(new Runnable()
-                    {
-                        @Override
-                        public void run()
-                        {
-                            myDialog3.show();                        }
-                    }, 1000);// 0.5초 정도 딜레이를 준 후 시작
-
+                    myDialog.dismiss();
+                    myDialog.setText("Succes", "You are now validated");
+                    myDialog.show();
 
                     Log.e("print matched", "");
-
-
 
                 } else if (message.equals("Error")) {
                     Toast.makeText(getContext(), "EROOR", Toast.LENGTH_SHORT).show();
 
                 } else if (message.equals("Did not match")) {
-                    myDialog4.show();
+                    myDialog.setText("FAIL", "Your finger didn't matched");
 
 
                 } else {
-
                     //데이터 전송
                     fingerData = message;
                     Log.e("message data", fingerData);
                     Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
                     sendDataToServer(fingerData);
                 }
-
-
 //                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-
-
             }
         });
 
@@ -265,43 +242,45 @@ public class FirstFragment extends Fragment {
     }
 
     //api
-    private void sendDataToServer(String data){
+    private void sendDataToServer(String data) {
         RequestParams params = new RequestParams();
-//        JSONObject jsonObject = new JSONObject();
-//        try {
-//            jsonObject.put("name","KIM TAEHYEONG");
-//            jsonObject.put("id","123");
-//            jsonObject.put("fingerPrint",data);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-        String jsonStr = "{\n" +
-                "  \"name\": \"KIM TAEHYEONG\",\n" +
-                "  \"id\": \"123\",\n" +
-                "  \"fingerPrint\": \"2391255255255255201303\"\n" +
-                "}";
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("name", "KIM TAEHYEONG");
+            jsonObject.put("id", "123");
+            jsonObject.put("fingerPrint", data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+//        String jsonStr = "{\n" +
+//                "  \"name\": \"KIM TAEHYEONG\",\n" +
+//                "  \"id\": \"123\",\n" +
+//                "  \"fingerPrint\": \"2391255255255255201303\"\n" +
+//                "}";
+        Log.e("jsonObject", jsonObject.toString());
 
-        params.put("postData", jsonStr);
+        params.put("postData", jsonObject.toString());
 
-        Network.post(getActivity(), "/project/votingSystem.php", params, new JsonHttpResponseHandler(){
+        Network.post(getActivity(), "/project/votingSystem.php", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
-                try{
-                    if (response.getString("code").equals("1")){
-                        Toast.makeText(getContext(),"sucess",Toast.LENGTH_SHORT).show();
-                        Log.e("fuck this im out",response.toString());
+                try {
+                    if (response.getString("code").equals("1")) {
+                        Toast.makeText(getContext(), "sucess", Toast.LENGTH_SHORT).show();
+                        Log.e("fuck this im out", response.toString());
                         layout_finger.setVisibility(View.GONE);
                         layout_card.setVisibility(View.GONE);
                         tv_validated.setVisibility(View.VISIBLE);
-                    }else{
-                        Toast.makeText(getContext(), response.toString() , Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getContext(), response.toString(), Toast.LENGTH_LONG).show();
                     }
-                } catch (Exception e){
-                    Toast.makeText(getContext(),"catch",Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), "catch", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
@@ -421,27 +400,24 @@ public class FirstFragment extends Fragment {
                             idCardStringData = stringBuilder.toString();
 
                             String name = "";
-                            if (idCardStringData.length() > 13)
-                            {
+                            if (idCardStringData.length() > 13) {
                                 name = idCardStringData.substring(idCardStringData.length() - 14);
-                            }
-                            else
-                            {
+                            } else {
                                 name = idCardStringData;
                             }
 
                             Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
-                            Log.e("name",name);
+                            Log.e("name", name);
 
                             int intIndex = name.indexOf("KIM");
 
-                            if(intIndex == - 1) {
+                            if (intIndex == -1) {
                                 System.out.println("Hello not found");
                             } else {
 
                                 cameraSource.stop();
 
-                                MyDialog myDialog = new MyDialog(getContext(),getActivity(),5);
+                                MyDialog myDialog = new MyDialog(getContext(), getActivity(), 5);
                                 myDialog.show();
                                 final String finalName = name;
                                 myDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {

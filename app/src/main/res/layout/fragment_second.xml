@@ -1,15 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.SecondFragment"
-    android:background="#ff0293">
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/btn_tom"
+        style="@style/button_square_white"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="second frag" />
+        android:layout_height="100dp">
+        <ImageView
+            android:padding="10dp"
+            android:src="@drawable/tomface"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:padding="10dp"
+                android:text="NAME : TOM\nAGE : 24\nElection pledge : No Dog World"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_right_arrow_md"/>
+    </LinearLayout>
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/btn_jerry"
+        style="@style/button_square_white"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <ImageView
+            android:padding="10dp"
+            android:src="@drawable/jerryface"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:padding="10dp"
+                android:text="NAME : TOM\nAGE : 24\nElection pledge : No Dog World"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_right_arrow_md"/>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
