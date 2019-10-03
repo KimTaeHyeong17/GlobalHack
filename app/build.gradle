@@ -40,5 +40,12 @@ dependencies {
 
     implementation "com.google.android.material:material:1.0.0"
     implementation 'com.google.android.gms:play-services-vision:9.8.0'
+    implementation 'com.akexorcist:bluetoothspp:1.0.0'
+
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+
+
 
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="328dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/round_corner_dialog"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:id="@+id/tv_work_detail_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="7sp"
+        android:text="김상철님의 업무 요청을 \n수락하시겠습니까?"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tv_work_detail_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="-0.02"
+        android:text="수락 하시면 고객에게 푸쉬메시지가\n 전달됩니다."
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <Button
+        android:layout_marginBottom="20dp"
+        android:id="@+id/btn_accept"
+        style="@style/button_square_blue"
+        android:layout_width="289dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="27dp"
+        android:text="수락" />
+
+
+
+
+</LinearLayout>

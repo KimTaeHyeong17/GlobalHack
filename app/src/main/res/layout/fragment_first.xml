@@ -7,14 +7,29 @@
     android:orientation="vertical"
     tools:context=".Fragment.FirstFragment">
 
-    <SurfaceView
-        android:layout_weight="1"
-        android:id="@+id/surface_view"
+    <include
+        android:id="@+id/layout_finger"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="match_parent"
+        layout="@layout/include_layout_finger"
+        />
+    <include
+        android:id="@+id/layout_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/include_layout_card"
+        />
 
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/tv_validated"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="You are Validated!"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="match_parent"/>
+
+
+
+
+
 </LinearLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <ImageView
+            android:src="@drawable/ic_fingerprint"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <TextView
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"
+            android:text="Invalid finger Print Information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <Button
+        android:id="@+id/btnConnect"
+        style="@style/button_square_blue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:text="Start Scanning Procedure" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/btnSend"
+        style="@style/button_square_blue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:text="send" />
+    <Button
+        android:id="@+id/btn_back_to_card"
+        style="@style/button_square_gray"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:text="back to card validation" />
+
+</LinearLayout>

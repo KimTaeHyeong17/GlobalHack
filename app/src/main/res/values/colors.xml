@@ -3,4 +3,32 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="white">#ffffff</color>
+
+
+    <!--    point color-->
+    <color name="deepIndigo">#131431</color>
+    <color name="indigo">#25264C</color>
+    <color name="lightIndigo">#3B3C5E</color>
+    <color name="blue">#3C41D1</color>
+    <color name="orange">#FF5100</color>
+
+    <!--    gray color-->
+    <color name="black">#000000</color>
+    <color name="gray100">#f5f5f7</color>
+    <color name="darkgray">#828282</color>
+
+
+    <!--    sns color-->
+    <color name="brown">#381E1F</color>
+    <color name="yello">#ffed31</color>
+    <color name="green">#3dba3f</color>
+    <color name="skyblue">#4285f4</color>
+
+    <!--button unselected    -->
+    <color name="btn_blue_selected">#1318a3</color>
+    <color name="btn_white_selected">#e2e3e9</color>
+    <color name="btn_gray_selected">#b8b8c4</color>
+
+
 </resources>

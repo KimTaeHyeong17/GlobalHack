@@ -1,4 +1,4 @@
-package com.example.globalhackapp;
+package com.example.globalhackapp.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.globalhackapp.Fragment.FirstFragment;
 import com.example.globalhackapp.Fragment.SecondFragment;
 import com.example.globalhackapp.Fragment.ThirdFragment;
+import com.example.globalhackapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
