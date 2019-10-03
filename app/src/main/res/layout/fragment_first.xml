@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
     tools:context=".Fragment.FirstFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <SurfaceView
+        android:layout_weight="1"
+        android:id="@+id/surface_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="FIsrt fragment" />
+        android:layout_height="0dp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+</LinearLayout>
