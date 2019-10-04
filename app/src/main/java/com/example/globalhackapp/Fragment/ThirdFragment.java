@@ -16,6 +16,14 @@ import android.widget.LinearLayout;
 
 import com.example.globalhackapp.Dialog.MyDialog;
 import com.example.globalhackapp.R;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
 
 public class ThirdFragment extends Fragment {
 
@@ -25,6 +33,7 @@ public class ThirdFragment extends Fragment {
     private MyDialog myDialog;
     private int count = 0;
 
+    private BarChart bar_chart;
     public ThirdFragment() {
         // Required empty public constructor
     }
@@ -79,10 +88,55 @@ public class ThirdFragment extends Fragment {
 
             }
         });
+        bar_chart = v.findViewById(R.id.bar_chart);
 
+        ArrayList<String> arrayList = new ArrayList();
+        arrayList.add("Busan");
+        arrayList.add("Seoul");
+        arrayList.add("Daejeon");
+
+
+        ArrayList<Integer> arrayList1 = new ArrayList<>();
+        arrayList1.add(23);
+        arrayList1.add(43);
+        arrayList1.add(10);
+
+
+        BarChartGraph(arrayList,arrayList1);
 
 
     }
+    private void BarChartGraph(ArrayList<String> labelList, ArrayList<Integer> valList) {
+        // BarChart 메소드
+
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        for(int i=0; i < valList.size();i++){
+            entries.add(new BarEntry((Integer) valList.get(i), i));
+        }
+
+        BarDataSet depenses = new BarDataSet (entries, "Voting rate"); // 변수로 받아서 넣어줘도 됨
+        depenses.setAxisDependency(YAxis.AxisDependency.LEFT);
+
+
+        ArrayList<String> labels = new ArrayList<String>();
+        for(int i=0; i < labelList.size(); i++){
+            labels.add((String) labelList.get(i));
+        }
+
+        BarData data = new BarData(labels,depenses); // 라이브러리 v3.x 사용하면 에러 발생함
+
+        depenses.setColors(ColorTemplate.COLORFUL_COLORS);
+        bar_chart.getAxisLeft().setDrawAxisLine(false);
+        bar_chart.getXAxis().setDrawGridLines(false);
+        bar_chart.setDescription("");
+        bar_chart.setTouchEnabled(false);
+        bar_chart.setData(data);
+        bar_chart.animateXY(1000,1000);
+        bar_chart.invalidate();
+    }
+
+
+
 
 
 

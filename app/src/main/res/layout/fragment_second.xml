@@ -58,7 +58,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:padding="10dp"
-                android:text="NAME : TOM\nAGE : 24\nElection pledge : No Dog World"
+                android:text="NAME : Jerry\nAGE : 21\nElection pledge : No Cat World"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -68,6 +68,17 @@
             android:layout_height="match_parent"
             android:src="@drawable/ic_right_arrow_md"/>
     </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </LinearLayout>
+
+
 
 
 
